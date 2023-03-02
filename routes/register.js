@@ -1,5 +1,6 @@
-const {Router}= require('express')
-const userModel= require('../models/User.js')
+import { Router } from 'express'
+import userModel from '../models/User.js'
+
 
 const router= Router()
 
@@ -23,4 +24,4 @@ router.post('/register', async(req, res)=>{
     res.status(200).send({status: 'Success, Usuario creado correctamente'})
 })
 
-module.exports= router
+export default router

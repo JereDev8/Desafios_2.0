@@ -2,7 +2,7 @@
   "name": "clase-11",
   "version": "1.0.0",
   "description": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,7 +23,7 @@
     "mongoose": "^6.9.0",
     "mysql": "^2.18.1",
     "normalizr": "^3.6.2",
-    "socket.io": "^4.5.4",
+    "socket.io": "^4.6.1",
     "sqlite3": "^5.1.4"
   },
   "devDependencies": {

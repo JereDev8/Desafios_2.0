@@ -1,4 +1,6 @@
-const { knex }= require("knex")
+
+import knex from "knex"
+
 
 class Contenedor{
     constructor(config, table){
@@ -73,93 +75,5 @@ class Contenedor{
 
 }
 
-module.exports= {Contenedor}
+export default Contenedor
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const heroes= new Contenedor({
-    //     client:'mysql',
-    //     connection:{
-        //         host:'localhost',
-        //         database:'productos',
-        //         password:'',
-        //         user:'root'
-        //     },
-        //     pool:{min:0, max:10}
-        // }, "products")
-        
-        // heroes.modifyProduct(12, {
-            //     name: "Ventilador",
-            //     price: 100,
-            //     thumbnail:'https://http2.mlstatic.com/D_NQ_NP_626105-MLA32384814346_102019-O.webp'
-            // })
-            // heroes.getAll()
-            
-            // let producto={
-                //     name: "Ventilador",
-                //     price: 100,
-                //     thumbnail:'https://http2.mlstatic.com/D_NQ_NP_626105-MLA32384814346_102019-O.webp'
-                // }
-                
-                
-                // heroes.insertProduct(producto)
-
-// heroes.getByID(2)
-// heroes.deleteById(14)
-
-
-// async returnProducts(){
-//     await this.config.select("*").from(this.table)
-//     .then((respuesta)=> respuesta)
-//     .catch((err)=> console.log(err))
-// }
-
-// async lastProduct(){
-//     await this.config.select("*").from(this.table)
-//     .then((respuesta)=> res.json(respuesta[respuesta.length-1]))
-//     .catch((err)=> res.send(err))
-// }

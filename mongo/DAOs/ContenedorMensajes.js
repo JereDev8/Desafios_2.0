@@ -1,6 +1,6 @@
-const mensajeModel= require('../dbMensajes.js')
-const mongoose= require('mongoose')
-const {normalize, schema}= require('normalizr')
+import mensajeModel from '../dbMensajes.js'
+import mongoose from 'mongoose'
+import { normalize, schema } from 'normalizr'
 
 
 
@@ -41,5 +41,6 @@ class ContenedorMensajes{
 
 }
 
-module.exports= ContenedorMensajes
+
+export default ContenedorMensajes
 

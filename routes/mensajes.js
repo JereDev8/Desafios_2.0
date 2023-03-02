@@ -1,5 +1,6 @@
-const {Router}= require('express')
-const ContenedorMensajes= require('../mongo/DAOs/ContenedorMensajes.js')
+import { Router } from 'express'
+import ContenedorMensajes from '../mongo/DAOs/ContenedorMensajes.js'
+
 
 
 const router= Router()
@@ -25,4 +26,4 @@ router.get('/api/mensajes',async (req, res)=>{
     res.send(messages)
 })
 
-module.exports= router
+export default router

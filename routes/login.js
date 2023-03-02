@@ -1,5 +1,6 @@
-const {Router}= require('express')
-const userModel= require('../models/User.js')
+import { Router } from 'express'
+import userModel from '../models/User.js'
+
 
 const router= Router()
 
@@ -28,4 +29,4 @@ router.get('/check', (req, res)=>{
     // console.log(req.session.user)
 })
 
-module.exports= router
+export default router

@@ -1,4 +1,5 @@
-const mongoose= require('mongoose')
+import mongoose from 'mongoose'
+
 
 const collection= 'mensajes'
 
@@ -9,4 +10,4 @@ const model= new mongoose.Schema({
 
 const mensajeModel= mongoose.model(collection, model)
 
-module.exports= mensajeModel
+export default mensajeModel

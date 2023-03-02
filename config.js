@@ -1,4 +1,4 @@
-module.exports= {
+const config= {
     mariaDB:{ 
         client:'mysql',
         connection:{
@@ -17,3 +17,5 @@ module.exports= {
         useNullAsDefault: true
     }
 }
+
+export default config

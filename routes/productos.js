@@ -1,10 +1,14 @@
-const express= require("express")
-const {Router}= require("express")
+import express, {Router} from 'express'
+import db from '../config.js'
+import knex from 'knex'
+import Contenedor from '../db.js'
+import {faker} from '@faker-js/faker'
+
+
+
 const router= Router()
-const db =require("../config")
-const knex= require("knex")
-const {Contenedor}= require("../db")
-const {faker}= require('@faker-js/faker')
+
+
 
 function createProduct(){
     return {
@@ -58,4 +62,4 @@ router.get('/api/productos-test', (req, res)=>{
  
 
 
-module.exports= router
+export default router

@@ -1,4 +1,5 @@
-const { Router } = require("express");
+import { Router } from "express";
+import { fork } from "child_process";
 
 const router= Router();
 
@@ -14,12 +15,13 @@ router.get('/info', (req, res)=>{
     `)
 })
 
-module.exports= router
+router.get('/calculo', (req, res)=>{
+    const forkeo= fork('./utils/CalcularNumeros')
+    forkeo.send('ejecutate')
+    forkeo.on('message', (msj)=>{
+        res.send(`El valor del calculo es: ${msj}`)
+    })
+})
 
-// console.log(process.argv)
-// console.log(process.platform)
-// console.log(process.version)
-// console.log(process.memoryUsage())
-// console.log(process.cwd())
-// console.log(process.pid)
-// console.log(process.execPath)
+export default router
+

@@ -1,36 +1,25 @@
+import express from 'express' 
+import path from 'path'
+import { Server } from 'socket.io'
+import handlebars from 'express-handlebars'
+import routeCarrito from './routes/carrito.js'
+import routeMensajes from './routes/mensajes.js'
+import routeLogin from './routes/login.js'
+import routeInfo from './routes/info.js'
+import routeRegister from './routes/register.js'
+import routeProductos from './routes/productos.js'
+import Contenedor from './db.js'
+import config from './config.js'
+import mongoose from 'mongoose'
+import cookieParser from 'cookie-parser'
+import session from 'express-session'
+import MongoStore from 'connect-mongo'
+import userModel from './models/User.js'
+import env from 'dotenv'
+import __dirname from './utils/__dirname.js'
 
-// OBJETIVOS DESAFIO CLASE 24:
-// 1) Que un usuario entre a register y se pueda registrar quedando su cuenta en mongo atlas
-// 2) Que un usuario registrado pueda loguearse en /login
-// 3) Que el usuario logueado se le cierre la sesion despues de un determinado tiempo, por ejemplo: 20s
 
-// 1A- A la hora de registrarse no debe poder registrar un gmail que ya haya sido utilizado antes
-// 1B- No puede registrarse si hay campos vacios
-
-// 2A- A la hora de loguearse debe dispararse una cookie que deje su sesion iniciada por un tiempo establecido
-// 2A- 
-
-
-
-const express= require("express")
-const path= require("path")
-const SocketIO= require("socket.io")
-const handlebars= require("express-handlebars")
-const routeProductos= require("./routes/productos")
-const routeCarrito= require("./routes/carrito")
-const routeMensajes= require("./routes/mensajes.js")
-const routeLogin= require('./routes/login.js')
-const routeRegister= require('./routes/register.js')
-const routeInfo= require('./routes/info.js')
-const { Contenedor }= require("./db")
-const config= require("./config")
-const mongoose= require('mongoose')
-const cookieParser= require('cookie-parser')
-const session= require('express-session')
-const MongoStore= require('connect-mongo')
-const userModel= require('./models/User.js')
-const env= require('dotenv').config()
-
+env.config()
 
 const conexion= mongoose.connect(process.env.MONGO_DB_URL, (err)=>{
     if(err) console.log(err)
@@ -90,7 +79,7 @@ app.get("/table", async (req, res)=>{
 })
     
 
-const server= app.listen(3000, ()=> console.log("Server on port "+ process.env.PORT || 3010 ))
+const server= app.listen(3000, ()=> console.log("Server on port "+ 3000 || 3010 ))
 
 
 
@@ -113,7 +102,7 @@ const server= app.listen(3000, ()=> console.log("Server on port "+ process.env.P
 
 // SOCKETS
 
-const io= SocketIO(server)
+const io= new Server(server)
 
 io.on("connection",async (socket)=>{
     console.log("New connection")
@@ -124,7 +113,6 @@ io.on("connection",async (socket)=>{
     })
     
     socket.on("chat:message", async (data)=>{
-        // dbMessages.getMessages()
         if(dbMessages.config.schema.hasTable("messages")){
             let data2= {...data, date:`${fecha.getHours()}:${fecha.getMinutes()}`}
             await dbMessages.insert(data2)
@@ -145,6 +133,6 @@ io.on("connection",async (socket)=>{
     })
     
 })
-
+ 
 
 

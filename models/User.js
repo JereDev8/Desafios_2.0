@@ -1,5 +1,4 @@
-const mongoose= require('mongoose')
-
+import mongoose from 'mongoose'
 
 const collection= 'users'
 
@@ -21,9 +20,9 @@ const schema= new mongoose.Schema({
     role:{
         type:String,
         default:'user'
-    }
+    } 
 })
 
 const userModel= mongoose.model(collection, schema)
 
-module.exports= userModel
+export default userModel
