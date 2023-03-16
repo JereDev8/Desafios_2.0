@@ -1,0 +1,65 @@
+
+<div> 
+    <h1>Bienvenido {{user.name}}</h1>
+    {{#if user.name}}
+    <a href="/login" id="deslog">Desloguear</a>
+    {{/if}}
+    
+</div>
+<h2>Crear producto</h2>
+<div>
+    <form class="formulario">
+        <label for="name">Nombre del producto</label>
+        <input id="nombreProducto" type="text" name="name" required> <br>
+        <label for="price"> Precio del Producto </label>
+        <input id="precioProducto" type="number" name="price" required> <br>
+        <label for="thumbnail">Imagen del producto (URL)</label>
+        <input id="imgProducto" type="url" name="thumbnail" required> <br>
+        <button id="create" type="submit"> Crear producto </button>
+    </form>
+</div>
+
+<h3>Chat</h3>
+
+<div class="cont-chat">
+    {{#each mensajes}}
+        <div class="cont-msj">
+            <strong> {{this.gmail}} </strong> <p class="dataMensaje">({{this.date}}): </p> 
+            <p class="message"> {{this.message}} </p>
+        </div>
+    {{/each}}
+</div>
+
+<form id="form" action="">
+    <input type="email" placeholder="Email" id="gmail" required></input>
+    <input type="text" placeholder="Su mensaje" id="mensaje" required></input>
+    <button id="sendMessage" type="submit">Send Message</button>
+</form>
+
+
+<h1>Productos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Imagen</th>
+        </tr>
+    </thead>
+    <tbody id="products">
+        {{#each productos}}
+        <tr>
+            <td>
+                {{this.name}}
+            </td>
+            <td>
+                {{this.price}}
+            </td>
+            <td><img style="width: 5%;" src={{this.thumbnail}} alt=""></td>
+        </tr>
+        {{/each}}
+    </tbody>
+    
+    <script src="/js/deslog.js"></script>
+    {{!-- {{fecha.getHours()+ ":" + fecha.getMinutes() + ":" + fecha.getSeconds()}} --}}
